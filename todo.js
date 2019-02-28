@@ -1,7 +1,30 @@
-const p = document.querySelectorAll('p');
+const todos = [{
+    text: 'order cat food',
+    completed: true
+}, {
+    text: 'order dog food',
+    completed: false
+}, {
+    text: 'buy food for me',
+    completed: true
+}, {
+    text: 'do work',
+    completed: false
+}, {
+    text: 'exercise',
+    completed: true
+}];
 
-p.forEach(function(para) {
-    if (para.textContent.toLowerCase().includes('get')) {
-        para.remove();
-    }
+const incompleteTodos = todos.filter(function (todo) {
+    return !todo.completed;
+})
+
+const summary = document.createElement('h2');
+summary.textContent = `You have ${incompleteTodos.length} todos left`;
+document.querySelector('section').appendChild(summary);
+
+todos.forEach(function (todo) {
+    const p = document.createElement('p');
+    p.textContent = `${todo.text}`;
+    document.querySelector('section').appendChild(p);
 })
