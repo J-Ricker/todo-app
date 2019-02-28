@@ -25,6 +25,6 @@ document.querySelector('section').appendChild(summary);
 
 todos.forEach(function (todo) {
     const p = document.createElement('p');
-    p.textContent = `${todo.text}`;
+    p.textContent = todo.text;
     document.querySelector('section').appendChild(p);
 })
