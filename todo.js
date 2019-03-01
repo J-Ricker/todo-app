@@ -17,11 +17,20 @@ const todos = [{
 
 const filters = {
     searchText: '',
+    hideCompleted: false,
 }
 
 const renderTodos = function (todos, filters) {
-    const filteredTodos = todos.filter(function (todo) {
+    let filteredTodos = todos.filter(function (todo) {
         return todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
+    })
+
+    filteredTodos = filteredTodos.filter(function (todo) {
+        if (filters.hideCompleted) {
+            return !todo.completed;
+        } else {
+            return true;
+        }
     })
 
     document.querySelector('#todos').innerHTML = '';
@@ -56,4 +65,9 @@ document.querySelector('#todo-form').addEventListener('submit', function (e) {
     })
     renderTodos(todos, filters);
     e.target.elements.addTodo.value = '';
+})
+
+document.querySelector('#check').addEventListener('change', function (e) {
+    filters.hideCompleted = e.target.checked;
+    renderTodos(todos, filters);
 })
