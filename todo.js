@@ -29,8 +29,6 @@ todos.forEach(function (todo) {
     document.querySelector('section').appendChild(p);
 })
 
-const btn = document.querySelector('button');
-
-btn.addEventListener('click', function (e) {
+document.querySelector('button').addEventListener('click', function (e) {
     e.target.textContent = 'A new todo was added';
 })
