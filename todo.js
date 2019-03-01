@@ -21,23 +21,18 @@ const filters = {
 }
 
 const renderTodos = function (todos, filters) {
-    let filteredTodos = todos.filter(function (todo) {
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
+    const filteredTodos = todos.filter(function (todo) {
+        const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
+        const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
+        
+        return searchTextMatch && hideCompletedMatch;
     })
-
-    filteredTodos = filteredTodos.filter(function (todo) {
-        if (filters.hideCompleted) {
-            return !todo.completed;
-        } else {
-            return true;
-        }
-    })
-
-    document.querySelector('#todos').innerHTML = '';
 
     const incompleteTodos = filteredTodos.filter(function (todo) {
         return !todo.completed;
     })
+
+    document.querySelector('#todos').innerHTML = '';
     
     const summary = document.createElement('h2');
     summary.textContent = `You have ${incompleteTodos.length} todos left`;
