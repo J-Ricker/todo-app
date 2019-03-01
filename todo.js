@@ -48,3 +48,12 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
     renderTodos(todos, filters);
 })
 
+document.querySelector('#todo-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    todos.push({
+        text: e.target.elements.addTodo.value,
+        completed: false
+    })
+    renderTodos(todos, filters);
+    e.target.elements.addTodo.value = '';
+})
