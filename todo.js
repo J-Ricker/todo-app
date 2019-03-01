@@ -33,6 +33,6 @@ document.querySelector('#add-todo').addEventListener('click', function (e) {
     e.target.textContent = 'A new todo was added';
 })
 
-document.querySelector('#new-todo').addEventListener('input', function (e) {
+document.querySelector('#new-todo-text').addEventListener('input', function (e) {
     console.log(e.target.value);
 })
