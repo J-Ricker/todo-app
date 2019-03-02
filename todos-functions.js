@@ -36,14 +36,20 @@ const renderTodos = function (todos, filters) {
 
 // get dome elements for individual todo
 const generateTodoDom = function (todo) {
-    const p = document.createElement('div');
-    const textElement = document.createElement('span');
-    const button = document.createElement('button');
-
-    button.textContent = 'Remove todo';
-    p.appendChild(button);
-    p.textContent = todo.text;
-    return p;
+    const todoEl = document.createElement('div');
+    const checkbox = document.createElement('input');
+    const todoText = document.createElement('span');
+    const removeButton = document.createElement('button');
+    // setup checkbox
+    checkbox.setAttribute('type', 'checkbox');
+    todoEl.appendChild(checkbox);
+    //setup todo text
+    todoText.textContent = todo.text;
+    todoEl.appendChild(todoText);
+    // setup remove button
+    removeButton.textContent = 'x';
+    todoEl.appendChild(removeButton);
+    return todoEl;
 }
 
 const generateSummaryDOM = function (incompleteTodos) {
