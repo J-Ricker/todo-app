@@ -36,7 +36,12 @@ const renderTodos = function (todos, filters) {
 
 // get dome elements for individual todo
 const generateTodoDom = function (todo) {
-    const p = document.createElement('p');
+    const p = document.createElement('div');
+    const textElement = document.createElement('span');
+    const button = document.createElement('button');
+
+    button.textContent = 'Remove todo';
+    p.appendChild(button);
     p.textContent = todo.text;
     return p;
 }
